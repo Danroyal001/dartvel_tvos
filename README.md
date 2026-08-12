@@ -1,3 +1,35 @@
+> ## 🛠️ Dartvel fork
+>
+> This is a fork of [`fluttertv/flutter-tvos`](https://github.com/fluttertv/flutter-tvos)
+> maintained for the [Dartvel](https://github.com/Danroyal001/dartvel) platform.
+> Dartvel treats televisions and set-top boxes as first-class build targets and
+> drives `dartvel build tvos` through this embedder (`flutter-tvos build tvos`),
+> skipping cleanly when it is not installed.
+>
+> **Why this fork exists:** so Dartvel can pin, patch, and track the
+> `flutter-tvos` embedder against the Flutter version Dartvel ships with.
+>
+> **Flutter compatibility (recorded 2026-08-12):** upstream pins Flutter
+> **3.44.8** (revision `058e0af2c2b57e369d905a03ac9748b0ebf543c6`) with
+> origin-signed tvOS engine artifacts `v1.0.2-flutter3.44.8`. Dartvel targets
+> **3.44.5** — the same minor, three patches ahead of Dartvel rather than behind
+> it, so this fork required no source changes. It hits neither wall the other
+> embedder forks do: not the prebuilt-engine ceiling that blocks
+> `dartvel_elinux`, and not the Dart 3.9 floor that `dartvel_shelf`'s
+> native-asset build hook requires. Note that the embedder carries its own
+> Flutter SDK, so a `dartvel build tvos` compiles against 3.44.8 rather than the
+> 3.44.5 pinned elsewhere in Dartvel.
+>
+> **Not yet verified by building.** No Dartvel app has been built through this
+> fork. tvOS requires macOS with Xcode, which Dartvel's development machine
+> cannot provide, so verification is pending a macOS runner. Device builds also
+> need a configured Xcode signing team; `--simulator --debug` is the unsigned
+> path.
+>
+> Upstream, docs, and license are unchanged below.
+
+---
+
 # flutter-tvos
 
 A Flutter toolchain for building and running Flutter apps on **Apple TV (tvOS)**.
